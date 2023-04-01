@@ -1,0 +1,8 @@
+{
+  "Name": "zin-ws v8sss",
+  "Host": "127.0.0.1",
+  "TcpPort": 8999,
+  "MaxConn": 1000,
+  "MaxPackageSize": 1024,
+  "WorkerPoolSize": 10
+}
