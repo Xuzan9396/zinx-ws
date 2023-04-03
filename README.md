@@ -83,9 +83,9 @@ request 中 目前有发送，断开，获取当前属性，获取当前连接
 package main
 
 import (
-	wsconfig "github.com/Xuzan9396/ws/config"
-	"github.com/Xuzan9396/ws/ziface"
-	"github.com/Xuzan9396/ws/znet"
+	wsconfig "github.com/Xuzan9396/zinx-ws/config"
+	"github.com/Xuzan9396/zinx-ws/ziface"
+	"github.com/Xuzan9396/zinx-ws/znet"
 	"log"
 	"time"
 )
@@ -196,7 +196,7 @@ package main
 
 import (
 	"flag"
-	"github.com/Xuzan9396/ws/znet"
+	"github.com/Xuzan9396/zinx-ws/znet"
 	"github.com/gorilla/websocket"
 	"log"
 	"net/http"

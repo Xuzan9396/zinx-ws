@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/Xuzan9396/ws/v4/ziface"
-	"github.com/Xuzan9396/ws/v4/znet"
+	"github.com/Xuzan9396/zinx-ws/v4/ziface"
+	"github.com/Xuzan9396/zinx-ws/v4/znet"
 	"log"
 )
 

@@ -2,8 +2,8 @@ package znet
 
 import (
 	"fmt"
-	wsconfig "github.com/Xuzan9396/ws/config"
-	"github.com/Xuzan9396/ws/ziface"
+	wsconfig "github.com/Xuzan9396/zinx-ws/config"
+	"github.com/Xuzan9396/zinx-ws/ziface"
 	"github.com/gorilla/mux"
 	"github.com/gorilla/websocket"
 	"log"

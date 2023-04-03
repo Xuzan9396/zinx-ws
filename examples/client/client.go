@@ -2,7 +2,7 @@ package main
 
 import (
 	"flag"
-	"github.com/Xuzan9396/ws/znet"
+	"github.com/Xuzan9396/zinx-ws/znet"
 	"github.com/gorilla/websocket"
 	"log"
 	"net/http"

@@ -1,7 +1,7 @@
 package znet
 
 import (
-	"github.com/Xuzan9396/ws/v2/ziface"
+	"github.com/Xuzan9396/zinx-ws/v2/ziface"
 	"github.com/gorilla/websocket"
 	"log"
 	"net"

@@ -1,8 +1,8 @@
 package znet
 
 import (
-	"github.com/Xuzan9396/ws/v8/utils"
-	"github.com/Xuzan9396/ws/v8/ziface"
+	"github.com/Xuzan9396/zinx-ws/v8/utils"
+	"github.com/Xuzan9396/zinx-ws/v8/ziface"
 	"log"
 	"runtime/debug"
 	"sync"

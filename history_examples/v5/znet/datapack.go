@@ -4,8 +4,8 @@ import (
 	"bytes"
 	"encoding/binary"
 	"errors"
-	"github.com/Xuzan9396/ws/v5/utils"
-	"github.com/Xuzan9396/ws/v5/ziface"
+	"github.com/Xuzan9396/zinx-ws/v5/utils"
+	"github.com/Xuzan9396/zinx-ws/v5/ziface"
 	"log"
 )
 

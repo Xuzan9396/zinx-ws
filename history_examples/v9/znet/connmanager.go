@@ -2,7 +2,7 @@ package znet
 
 import (
 	"errors"
-	"github.com/Xuzan9396/ws/v9/ziface"
+	"github.com/Xuzan9396/zinx-ws/v9/ziface"
 	"sync"
 )
 

@@ -2,7 +2,7 @@ package utils
 
 import (
 	"encoding/json"
-	"github.com/Xuzan9396/ws/v6/ziface"
+	"github.com/Xuzan9396/zinx-ws/v6/ziface"
 	"io/ioutil"
 )
 

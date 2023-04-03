@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/Xuzan9396/ws/v1/znet"
+	"github.com/Xuzan9396/zinx-ws/v1/znet"
 	"log"
 )
 

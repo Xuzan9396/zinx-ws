@@ -2,8 +2,8 @@ package znet
 
 import (
 	"errors"
-	"github.com/Xuzan9396/ws/v7/utils"
-	"github.com/Xuzan9396/ws/v7/ziface"
+	"github.com/Xuzan9396/zinx-ws/v7/utils"
+	"github.com/Xuzan9396/zinx-ws/v7/ziface"
 	"github.com/gorilla/websocket"
 	"log"
 	"net"

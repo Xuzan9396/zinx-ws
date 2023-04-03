@@ -2,7 +2,7 @@ package znet
 
 import (
 	"fmt"
-	"github.com/Xuzan9396/ws/v5/ziface"
+	"github.com/Xuzan9396/zinx-ws/v5/ziface"
 	"github.com/gorilla/mux"
 	"github.com/gorilla/websocket"
 	"log"

@@ -1,4 +1,4 @@
-module github.com/Xuzan9396/ws
+module github.com/Xuzan9396/zinx-ws
 
 go 1.18
 

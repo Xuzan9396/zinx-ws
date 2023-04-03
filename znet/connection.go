@@ -2,8 +2,8 @@ package znet
 
 import (
 	"errors"
-	wsconfig "github.com/Xuzan9396/ws/config"
-	"github.com/Xuzan9396/ws/ziface"
+	wsconfig "github.com/Xuzan9396/zinx-ws/config"
+	"github.com/Xuzan9396/zinx-ws/ziface"
 
 	"github.com/gorilla/websocket"
 	"log"

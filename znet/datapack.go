@@ -4,8 +4,8 @@ import (
 	"bytes"
 	"encoding/binary"
 	"errors"
-	wsconfig "github.com/Xuzan9396/ws/config"
-	"github.com/Xuzan9396/ws/ziface"
+	wsconfig "github.com/Xuzan9396/zinx-ws/config"
+	"github.com/Xuzan9396/zinx-ws/ziface"
 
 	"log"
 )

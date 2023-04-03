@@ -1,9 +1,9 @@
 package main
 
 import (
-	wsconfig "github.com/Xuzan9396/ws/config"
-	"github.com/Xuzan9396/ws/ziface"
-	"github.com/Xuzan9396/ws/znet"
+	wsconfig "github.com/Xuzan9396/zinx-ws/config"
+	"github.com/Xuzan9396/zinx-ws/ziface"
+	"github.com/Xuzan9396/zinx-ws/znet"
 	"log"
 	"time"
 )
