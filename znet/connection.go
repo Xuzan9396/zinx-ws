@@ -47,6 +47,8 @@ type Connection struct {
 	property map[string]interface{}
 
 	propertyLock sync.RWMutex
+
+	chain ziface.ChainAll
 }
 
 const (
@@ -71,12 +73,14 @@ func NewConnection(server ziface.IServer, conn *websocket.Conn, connID uint32) *
 
 	c.onConnStart = server.GetOnConnStart()
 	c.onConnStop = server.GetOnConnStop()
+	c.chain = server.GetChain()
 
 	return c
 }
 
 func (c *Connection) Start() {
 	// 添加链接
+
 	c.ConnMgr.Add(c)
 	log.Println("start read and writer connect_id:", c.ConnID)
 	c.callOnConnStart()
@@ -103,6 +107,7 @@ func (c *Connection) StartReader() {
 		if err != nil {
 			break
 		}
+
 		dp := NewDataPack()
 		imsg, err := dp.Unpack(message)
 		if err != nil {
@@ -115,7 +120,10 @@ func (c *Connection) StartReader() {
 			msg:  imsg,
 		}
 		//c.msgHandler.DoMsgHandler(req) // 没workerpool
-		c.msgHandler.SendMsgToTaskQueue(req) // 设置workerpool分发
+		//c.msgHandler.SendMsgToTaskQueue(req) // 设置workerpool分发
+		// 修改成责任链
+
+		c.chain.StartChain(req)
 
 	}
 }
@@ -268,4 +276,8 @@ func (c *Connection) RemoveProperty(key string) {
 	c.propertyLock.Lock()
 	defer c.propertyLock.Unlock()
 	delete(c.property, key)
+}
+
+func (c *Connection) GetmsgHandler() ziface.ImsgHandle {
+	return c.msgHandler
 }

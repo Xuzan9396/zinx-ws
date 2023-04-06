@@ -58,7 +58,7 @@ func (c *MsgHandle) DoMsgHandler(request ziface.IRequest) {
 	}()
 	handler, ok := c.Apis[request.GetMsgID()]
 	if !ok {
-		log.Println("没有找到该方法")
+		log.Println("没有找到该方法的协议号")
 		return
 	}
 	handler.PreHandle(request)

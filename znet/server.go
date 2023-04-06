@@ -26,13 +26,16 @@ type Server struct {
 	// 连接ID递增
 	ConnIdInt uint32
 	// 消息管理器
-	msgHandler ziface.ImsgHandle
+	msgHandler ziface.ImsgHandle // 实现了方法的结构体
 	// 链接管理模块
 	ConnMgr ziface.IConnManager
 	// 启动构造函数
 	OnConnStart func(conn ziface.IConnection)
 	//销毁构造函数
 	OnConnStop func(conn ziface.IConnection)
+
+	// 设置责任链
+	chainAll ziface.ChainAll
 }
 
 var wsUpgrader = websocket.Upgrader{
@@ -52,6 +55,7 @@ func NewServer() ziface.IServer {
 		Port:       wsconfig.GlobalObject.TcpPort,
 		msgHandler: NewMsgHandle(),
 		ConnMgr:    NewConnManager(),
+		chainAll:   NewChainAllInfo(),
 	}
 	return s
 }
@@ -141,10 +145,22 @@ func (s *Server) SetOnConnStop(hookFunc func(conn ziface.IConnection)) {
 	s.OnConnStop = hookFunc
 }
 
+// 启动链接执勤啊执行
 func (s *Server) GetOnConnStart() (hookFunc func(conn ziface.IConnection)) {
 	return s.OnConnStart
 }
 
+// 关闭链接之前执行
 func (s *Server) GetOnConnStop() (hookFunc func(conn ziface.IConnection)) {
 	return s.OnConnStop
+}
+
+// 设置责任链
+func (s *Server) AddChain(chain ziface.Chain) {
+	s.chainAll.SetChain(chain)
+}
+
+// 设置责任链
+func (s *Server) GetChain() ziface.ChainAll {
+	return s.chainAll
 }

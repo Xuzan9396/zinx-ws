@@ -12,16 +12,14 @@ import (
 	"time"
 )
 
-var addr = flag.String("addr", "127.0.0.1:8999", "http service address")
-
 func main() {
+	var addr = flag.String("addr", "127.0.0.1:8999", "http service address")
 
 	flag.Parse()
 	log.SetFlags(0)
 
 	interrupt := make(chan os.Signal, 1)
 	signal.Notify(interrupt, os.Interrupt)
-
 	u := url.URL{Scheme: "ws", Host: *addr, Path: "/"}
 	log.Printf("connecting to %s", u.String())
 	c, _, err := websocket.DefaultDialer.Dial(u.String(), http.Header{"User-Agent": {""}})
@@ -42,33 +40,10 @@ func main() {
 		Data:    by,
 	})
 
-	byPing := []byte("ping")
-	resPingBytes, _ := p.Pack(&znet.Message{
-		Id:      2,
-		DataLen: uint32(len(byPing)),
-		Data:    byPing,
-	})
-	timer := time.NewTimer(30 * time.Second)
-
-	go read(c)
+	go readChain(c)
 	for {
 		select {
-		case <-timer.C:
-			// 认证登录
-			sendMsg := []byte("login")
-			sendMsgPack, _ := p.Pack(&znet.Message{
-				Id:      1001,
-				DataLen: uint32(len(sendMsg)),
-				Data:    sendMsg,
-			})
-			err := c.WriteMessage(websocket.BinaryMessage, sendMsgPack)
-			if err != nil {
-				log.Println("write:", err)
-				timer.Stop()
-				return
-			}
-			log.Println("login写入成功:", string(sendMsg))
-			timer.Stop()
+
 		case <-ticker.C:
 			sendMsg := resBytes
 			err := c.WriteMessage(websocket.BinaryMessage, sendMsg)
@@ -78,13 +53,6 @@ func main() {
 			}
 			log.Println("写入成功:", string(by))
 
-			err = c.WriteMessage(websocket.BinaryMessage, resPingBytes)
-			if err != nil {
-				log.Println("write:", err)
-				return
-			}
-
-			log.Println("写入成功:", string(resPingBytes))
 		case <-interrupt:
 			log.Println("interrupt")
 			err := c.WriteMessage(websocket.CloseMessage, websocket.FormatCloseMessage(websocket.CloseNormalClosure, ""))
@@ -98,7 +66,7 @@ func main() {
 
 }
 
-func read(c *websocket.Conn) {
+func readChain(c *websocket.Conn) {
 	for {
 		_, message, err := c.ReadMessage()
 		if err != nil {

@@ -28,6 +28,8 @@ type IConnection interface {
 	GetProperty(key string) (interface{}, bool)
 
 	RemoveProperty(key string)
+
+	GetmsgHandler() ImsgHandle
 }
 
 //type HandleFunc func(*websocket.Conn, []byte, int) error
