@@ -2,8 +2,8 @@
 #### 目标?
 ##### 维护golang版websocket版本, 打算跟zinx tcp 版本同步，然后无偿开源
 
-更新
-【v0.0.2】新增责任链，新增自定义责任链,消息拦截解耦,examples有案例,，添加znet/chain.go , ziface/ichain.go
+#### 更新
+##### 【v0.0.2】新增责任链，新增自定义责任链,消息拦截解耦,examples有案例，添加znet/chain.go , ziface/ichain.go
 
 
 #### 为什么做这个项目？
