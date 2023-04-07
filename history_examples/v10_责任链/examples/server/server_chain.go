@@ -5,7 +5,6 @@ import (
 	"github.com/Xuzan9396/zinx-ws/ziface"
 	"github.com/Xuzan9396/zinx-ws/znet"
 	"log"
-	"time"
 )
 
 func init() {
@@ -16,11 +15,10 @@ type MyChain struct {
 	znet.BaseChain
 }
 
-func (h *MyChain) HandleChainRequest(request ziface.ChainRequest) ziface.ChainResErr {
+func (h *MyChain) HandleChainRequest(request ziface.ChainRequest) ziface.ChainResponse {
 	log.Println("我是责任链第二条!")
-	time.Sleep(5 * time.Second)
-	return znet.NewError("错误sss", 10002)
-	//return h.BaseChain.HandleChainRequest(request)
+
+	return h.BaseChain.HandleChainRequest(request)
 }
 
 func main() {

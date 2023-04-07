@@ -4,17 +4,14 @@ package ziface
 type ChainRequest interface {
 }
 
-type ChainResErr interface {
-	error
-	Code() uint32
+type ChainResponse interface {
 }
-
 type Chain interface {
-	HandleChainRequest(request ChainRequest) ChainResErr
+	HandleChainRequest(request ChainRequest) ChainResponse
 	SetNext(chain Chain)
 }
 
 type ChainAll interface {
 	SetChain(chain Chain)
-	StartChain(request ChainRequest) ChainResErr
+	StartChain(request ChainRequest) ChainResponse
 }

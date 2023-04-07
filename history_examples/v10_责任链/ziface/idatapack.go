@@ -5,6 +5,8 @@ package ziface
 */
 
 type IDataPack interface {
+	// 长度
+	GetHeadLen() uint32
 
 	// 封包
 	Pack(msg Imessage) ([]byte, error)

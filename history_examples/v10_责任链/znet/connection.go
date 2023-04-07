@@ -101,29 +101,29 @@ func (c *Connection) StartReader() {
 			c.Conn.SetReadDeadline(time.Now().Add(pongWait))
 			return nil
 		})
+
 	for {
 		message, err := c.read()
 		if err != nil {
 			break
 		}
-		var dp ziface.IDataPack
 
-		dp = NewDataPack()
-
+		dp := NewDataPack()
 		imsg, err := dp.Unpack(message)
 		if err != nil {
 			log.Printf("error: %v\n", err)
 			break
+
+		}
+		req := &Request{
+			conn: c,
+			msg:  imsg,
 		}
 		//c.msgHandler.DoMsgHandler(req) // 没workerpool
 		//c.msgHandler.SendMsgToTaskQueue(req) // 设置workerpool分发
-		req := NewRequest(c, imsg, message)
 		// 修改成责任链
-		errs := c.chain.StartChain(req)
-		if errs != nil {
-			log.Println("error:", errs.Error(), ",code:", errs.Code())
-			break
-		}
+
+		c.chain.StartChain(req)
 
 	}
 }

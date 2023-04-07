@@ -8,13 +8,6 @@ type Request struct {
 	msg  ziface.Imessage
 }
 
-func NewRequest(c ziface.IConnection, msg ziface.Imessage, raw_data []byte) *Request {
-	return &Request{
-		conn: c,
-		msg:  msg,
-	}
-}
-
 func (r *Request) GetConnetion() ziface.IConnection {
 	return r.conn
 }

@@ -11,12 +11,11 @@ type BaseChain struct {
 	next ziface.Chain
 }
 
-func (h *BaseChain) HandleChainRequest(request ziface.ChainRequest) ziface.ChainResErr {
+func (h *BaseChain) HandleChainRequest(request ziface.ChainRequest) ziface.ChainResponse {
 	if h.next != nil {
-
 		return h.next.HandleChainRequest(request)
 	}
-	return nil
+	return request
 }
 
 func (h *BaseChain) SetNext(handler ziface.Chain) {
@@ -50,31 +49,10 @@ func (ca *ChainAllInfo) SetChain(chain ziface.Chain) {
 
 }
 
-func (ca *ChainAllInfo) StartChain(request ziface.ChainRequest) ziface.ChainResErr {
+func (ca *ChainAllInfo) StartChain(request ziface.ChainRequest) ziface.ChainResponse {
 	if ca.list != nil && len(ca.list) >= 0 {
 		// 执行责任链触发地条
 		return ca.list[0].HandleChainRequest(request)
 	}
-	return nil
-}
-
-// -------------------------  error  -----------------------
-type BaseChainResp struct {
-	code    uint32
-	Message string
-}
-
-func NewError(msg string, code uint32) ziface.ChainResErr {
-	return &BaseChainResp{
-		code:    code,
-		Message: msg,
-	}
-}
-
-func (e *BaseChainResp) Error() string {
-	return e.Message
-}
-
-func (e *BaseChainResp) Code() uint32 {
-	return e.code
+	return request
 }
