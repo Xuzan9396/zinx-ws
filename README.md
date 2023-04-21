@@ -1,3 +1,5 @@
+
+[![Visitors](https://visitor-badge.glitch.me/badge?page_id=Xuzan9396.zinx-ws)](https://github.com/Xuzan9396/zinx-ws)
 # zinx-websocket版本  
 #### 目标?
 > 维护golang版websocket版本开源
@@ -305,7 +307,5 @@ func read(c *websocket.Conn) {
 
 ```
 
-###### 参考链接
-https://github.com/aceld/zinx 来自冰哥
 
-[![Visitors](https://visitor-badge.glitch.me/badge?page_id=Xuzan9396.zinx-ws)](https://github.com/Xuzan9396/zinx-ws)
+
